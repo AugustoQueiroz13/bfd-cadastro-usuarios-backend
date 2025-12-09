@@ -1,0 +1,10 @@
+HTTP Métodos
+
+Get -> Listar
+Post -> Criar
+Put -> Editar vários
+Patch -> Editar um
+Delete -> Deletar
+
+1) Tipo de Rota / Método HTTP
+2) Endereço (pode ser um endereço da internet / endereço local)
