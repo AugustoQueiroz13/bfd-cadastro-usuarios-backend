@@ -1,2 +1,9 @@
-- node --watch server.js (reiniciar o servidor automaticamente sempre que fizer alterações
-)
+ install node  (instalar o node)
+ node -v (verificar a versão do node)
+ node --watch server.js (reiniciar o servidor automaticamente sempre que fizer alterações)
+ 
+ npx prisma db push (inicir bando de dados prisma)
+ npm install @prisma/client (instalar cliente prisma)
+ npx prisma generate (gerar sistema do prisma)
+ npx prisma init - (iniciar prisma)
+ npx prisma validade (validar sistema do prisma)
