@@ -22,6 +22,21 @@ app.post('/usuarios', async (req, res) => {
     }
 });
 
+app.put('/usuarios/:id', async (req, res) => {
+    
+    await prisma.user.update({
+        where: {
+            id: req.params.id
+        },
+        data: {
+                name: req.body.name,
+                email: req.body.email,
+                age: req.body.age
+            }
+        });
+    res.status(200).json({ message: 'Usuário atualizado com sucesso!' });
+});
+
 app.delete('/usuarios/:id', async (req, res) => {
     await prisma.user.delete({
         where: {
@@ -33,17 +48,25 @@ app.delete('/usuarios/:id', async (req, res) => {
 
 
 app.get('/usuarios', async (req, res) => {
-    try {
-        const users = await prisma.user.findMany();
-        res.status(200).json(users);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    let users = []
+
+    if  (req.query.name || req.query.email || req.query.age) {
+        users = await prisma.user.findMany({
+            where: {
+                name: req.query.name,
+                email: req.query.email,
+                age: req.query.age
+            }
+        });
+    } else {
+        users = await prisma.user.findMany();
     }
+    res.status(200).json(users);
 });
 
 app.listen(3000, () => {
     console.log('Server running on port 3000');
-});x    
+});   
 
 
 /* 
